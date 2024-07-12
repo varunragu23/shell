@@ -1,5 +1,2 @@
 # Ignore all files without an extension
-*
-!*/
-!*.c
-!*.h
+main
