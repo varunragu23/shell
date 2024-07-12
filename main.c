@@ -15,7 +15,7 @@ char* read_input() {
 
    char *input = malloc(sizeof(char) * cur_bufsize);
 
-   printf(">");
+   printf("shell>");
 
    if(!input) {
       printf("allocation error\n");
