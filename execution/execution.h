@@ -25,7 +25,11 @@ int shell_help(char **args);
 int shell_exit(char **args);
 int shell_hist(char **args);
 
-int shell_launch(char **args);
-int shell_exec(char **args);
+int shell_launch(char **args, int pipe_count, int (*pipes)[2], int dir[2]);
+
+int shell_exec(char **args, int pipe_count, int (*pipes)[2], int dir[2]);
+
+void close_pipes(int pipe_count, int (*pipes)[2]);
+
 
 #endif // EXECUTION_H

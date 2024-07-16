@@ -16,7 +16,8 @@ SRCS = main.c \
        $(BUILTINSDIR)/cd.c \
        $(BUILTINSDIR)/help.c \
        $(BUILTINSDIR)/exit.c \
-       $(BUILTINSDIR)/hist.c
+       $(BUILTINSDIR)/hist.c \
+       $(PARSINGDIR)/parse_pipe.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)

@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 
 char *builtin_str[] = {
@@ -18,7 +19,14 @@ int (*builtin_cmd[]) (char **) = {
     &shell_hist,
 };
 
-int shell_exec(char **args) {
+void close_pipes(int pipe_count, int (*pipes)[2]) {
+    for(int i = 0; i < pipe_count; i++) {
+        close(pipes[i][0]);
+        close(pipes[i][1]);
+    }
+}
+
+int shell_exec(char **args, int pipe_count, int (*pipes)[2], int dir[2]) {
     if (args[0] == NULL) {
         return 1;
     }
@@ -28,5 +36,5 @@ int shell_exec(char **args) {
             return (*builtin_cmd[i])(args);
         }
     }
-    return shell_launch(args);
+    return shell_launch(args, pipe_count, pipes, dir);
 }
